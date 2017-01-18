@@ -1,5 +1,3 @@
-
-
 'use strict'
 
 var watson = require('watson-developer-cloud');
@@ -25,18 +23,17 @@ var client = new Twitter({
 
   read.question("To assess sentiment analysis type the twitter handle: ", function (answer, count) {
   read.close();
-  var options = {screen_name: answer, count: 50};
+  var options = {screen_name: answer, count: 10};
     client.get('statuses/user_timeline', options, function (err, data, response) {
       //console.log(data);
     var tweets = '';
-      //console.log('Tweets' + ' ' + data.length);
+      console.log('Tweets' + ' ' + data.length);
         for (var i = 0; i < data.length; i++){
           var progress = i++;
             tweets += data[i].text;
-            //console.log('Tweets loading' + ' ' + progress);
+            console.log('Tweets loading' + ' ' + progress/data.length * 100 + '%');
             //console.log(tweets);
 }
-
 
   const oldString = tweets.toLowerCase().replace(/[^a-z\s]+/g, '').split(' ');
   const word = sw.removeStopwords(oldString); //Remove stop-words from tweets
@@ -45,8 +42,8 @@ var client = new Twitter({
       for (var i = 0; i < word.length; i++){
         wordCount[word[i]] = (wordCount[word[i]]) ? wordCount[word[i]] + 1 : 1; //To create a table of words in tweets and frequency
 }
-        console.log(wordCount);
-      return wordCount;
+        // console.log(wordCount);
+      // return wordCount;
 
 
   var words = [];
@@ -54,9 +51,8 @@ var client = new Twitter({
       words.push([i, wordCount[i]])
       words.sort(function(a, b) { return a[1] - b[1]; //To sort words based on frequency
 })
+      console.log("hey!!!!!")
       console.log(words);
-
-
       
   var parameters = {
     url: 'www.twitter.com/' + answer + '/'  };
@@ -68,4 +64,3 @@ var client = new Twitter({
 });
 });
 });
- 
