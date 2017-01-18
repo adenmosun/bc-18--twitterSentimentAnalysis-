@@ -6,6 +6,10 @@ Sentiment Analysis ===>
                                 
  AlchemyAPI's sentiment analysis ===>
                                           algorithm looks for words that carry a positive or negative connotation then figures out which person, place or thing they are referring to. It also understands negations 
+               doc sentiment
+mixed	1 indicates that the sentiment is both positive and negative
+score	Sentiment strength (0.0 == neutral)
+type	Sentiment polarity: positive, negative, or neutral
 
 Use the Twitter API to fetch tweets for a particular user and save them in JSON file (for a given period e.g. 1 week or 1 month depending on the volume).
 Show % progress as the Twitter API is fetching the tweets.
