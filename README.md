@@ -1,11 +1,12 @@
 # bc-18--twitterSentimentAnalysis-
 
-Twitter Sentiment Analysis
+Twitter Sentiment Analysis.
+
 It is a command line application that allows users to analyze the words on a twitter handle's timeline 
 
 It has the following features:
-**Word frequency analysis.
-  Sentiment analysis.
+*Word frequency analysis.
+*Sentiment analysis.
 
 Word frequency analysis ===> lists the words with their frequency starting from the highest to the lowest
 
