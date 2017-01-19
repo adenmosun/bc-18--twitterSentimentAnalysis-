@@ -8,6 +8,8 @@ var alchemy_language = watson.alchemy_language({
 var Twitter = require('twitter');
 var rl = require('readline');
 var sw = require('stopword');
+var Table = require('easy-table');
+var consoleTable = require('console.table');
  
 var client = new Twitter({
   consumer_key: 'kNWbOtCaNjp7rXajQcs0A0UJB',
@@ -23,7 +25,7 @@ var client = new Twitter({
 
   read.question("To assess sentiment analysis type the twitter handle: ", function (answer, count) {
   read.close();
-  var options = {screen_name: answer, count: 10};
+  var options = {screen_name: answer, count: 500};
     client.get('statuses/user_timeline', options, function (err, data, response) {
       //console.log(data);
     var tweets = '';
@@ -31,7 +33,7 @@ var client = new Twitter({
         for (var i = 0; i < data.length; i++){
           var progress = i++;
             tweets += data[i].text;
-            console.log('Tweets loading' + ' ' + progress/data.length * 100 + '%');
+            console.log('Tweets loading' + ' ' + Math.round(progress/data.length * 100) + '%');
             //console.log(tweets);
 }
 
@@ -49,10 +51,10 @@ var client = new Twitter({
   var words = [];
     for (var i in wordCount)
       words.push([i, wordCount[i]])
-      words.sort(function(a, b) { return a[1] - b[1]; //To sort words based on frequency
+      words.sort(function(a, b) { return b[1] - a[1]; //To sort words based on frequency 
 })
       console.log("hey!!!!!")
-      console.log(words);
+      console.table('words    frequency', words.slice(0, 21));
       
   var parameters = {
     url: 'www.twitter.com/' + answer + '/'  };
@@ -60,7 +62,7 @@ var client = new Twitter({
       if (err)
         console.log('error:', err);
       else
-        console.log(JSON.stringify(response, null, 2)); //sentiment anakysis with alchemy
+        console.log(JSON.stringify(response, null, 2)); //sentiment analysis with alchemy
 });
 });
 });
