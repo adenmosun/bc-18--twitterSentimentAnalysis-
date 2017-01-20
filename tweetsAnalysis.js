@@ -26,11 +26,11 @@ var client = new Twitter({
 
   read.question("To assess sentiment analysis type the twitter handle: ", function (answer, count) {
   read.close();
-  var options = {screen_name: answer, count: 500};
+  var options = {screen_name: answer, count: 200};
     client.get('statuses/user_timeline', options, function (err, data, response) {
     var tweets = '';
       console.log('Tweets' + ' ' + data.length);
-        for (var i = 0; i < data.length; i++){
+        for (var i = 0; i < data.length; i++){//looping data to request the value of the key - text
           var progress = i++;
             tweets += data[i].text;
             console.log('Tweets loading' + ' ' + Math.round(progress/data.length * 100) + '%');
@@ -51,23 +51,24 @@ var client = new Twitter({
       words.sort(function(a, b) { return b[1] - a[1]; //To sort words based on frequency from highest to lowest
 })
       console.log("hey!!!!!")
-      console.table('words    frequency', words.slice(0, 21));
+      console.table('words    frequency', words.slice(0, 21));//first 20 words of wordCount
  
-
+  console.log('Sentiment Analysis of ' + answer + '"s twitter timeline:')
   var parameters = {
-    url: 'www.twitter.com/' + answer + '/'  };
+    url: 'www.twitter.com/' + answer + '/'  };//sentiment analysis with watson  alchemy api
     alchemy_language.sentiment(parameters, function (err, response) {
       if (err) {
         console.log('error:', err);
       }
       else {
-        var docSentiment = response.docSentiment
+        var docSentiment = response.docSentiment//looping through respnse.json for key-docSentiment
         var sentiment = []
+        sentiment.push(['Parameters', ' Indicator'])
         for (var key in docSentiment){
-          sentiment.push([key, docSentiment[key]])
+          sentiment.push([key, docSentiment[key]])//push key value pair under docSentimrnt to an array
  }
 }
-        console.table('sentiment    value', sentiment); //sentiment analysis with alchemy
+          console.table(sentiment[0], sentiment.slice(1)); //sentiment analysis with alchemy
          
 });
 });
