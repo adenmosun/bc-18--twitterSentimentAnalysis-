@@ -1,4 +1,4 @@
-# bc-18--twitterSentimentAnalysis-
+# twitterSentimentAnalysis
 
 
 ## Introduction
