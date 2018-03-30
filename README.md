@@ -35,10 +35,10 @@
 *  Clone this repository on that directory.
   *  Using SSH;
 
-    >`git clone git@github.com:adenmosun/bc-18--twitterSentimentAnalysis-.git`
+    >`git clone git@github.com:adenmosun/twitterSentimentAnalysis-.git`
 
   *  Using HTTP;
 
-    >`https://github.com/adenmosun/bc-18--twitterSentimentAnalysis-.git`
+    >`https://github.com/adenmosun/twitterSentimentAnalysis-.git`
 
 
